@@ -1,6 +1,10 @@
 peer:
   persistence:
     enabled: true
+  docker:
+    dind: 
+      persistence:
+        enabled: true
 
 orderer:
   persistence:
