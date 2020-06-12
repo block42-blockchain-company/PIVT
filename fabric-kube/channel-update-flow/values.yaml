@@ -4,7 +4,7 @@
 
 retryCount: 4
 
-hyperledgerVersion: 1.4.5
+hyperledgerVersion: 2.1.1
 
 # see the Raft sample in the README for how to enable TLS
 tlsEnabled: false
@@ -36,7 +36,7 @@ update:
     
     # set channel capabilities
     capabilities:
-      version: V1_4_2
+      version: V2_0 #V1_4_2
 
     # make arbitrary change by jsonPath
     jsonPath:

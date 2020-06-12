@@ -2,7 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-hyperledgerVersion: 1.4.5
+hyperledgerVersion: 2.1.1
+hyperledgerVersionCA: 1.4.7
 
 # see the Raft sample in the README for how to enable TLS
 tlsEnabled: false

@@ -4,6 +4,7 @@ Check out `ORIGINAL-README.md` for the original README and additional setup poss
 
 ## Abbreviations
 Hyperledger Fabric - *HF*
+
 Kubernetes - *K8s*
 
 ## Requirements

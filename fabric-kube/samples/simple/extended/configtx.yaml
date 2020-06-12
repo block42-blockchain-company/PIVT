@@ -212,7 +212,7 @@ Capabilities:
         # prior releases.
         # Prior to enabling V1.4.2 channel capabilities, ensure that all
         # orderers and peers on a channel are at v1.4.2 or later.
-        V1_4_3: true
+        V2_0: true
     # Orderer capabilities apply only to the orderers, and may be safely
     # manipulated without concern for upgrading peers.  Set the value of the
     # capability to true to require it.
@@ -221,7 +221,7 @@ Capabilities:
         # determined to be desired for all orderers running v1.0.x, but the
         # modification of which  would cause incompatibilities.  Users should
         # leave this flag set to true.
-        V1_4_2: true
+        V2_0: true
 
     # Application capabilities apply only to the peer network, and may be safely
     # manipulated without concern for upgrading orderers.  Set the value of the
@@ -231,7 +231,7 @@ Capabilities:
         # determined to be desired for all peers running v1.0.x, but the
         # modification of which would cause incompatibilities.  Users should
         # leave this flag set to true.
-        V1_4_2: true
+        V2_0: true
 
 ################################################################################
 #
