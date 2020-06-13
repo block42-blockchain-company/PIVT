@@ -31,13 +31,13 @@ network:
         orgs: [Karga]
         policy: OR('KargaMSP.member','NevergreenMSP.member','AtlantisMSP.member')
         
-    - name: even-simpler
-      # if defined, this will override the global chaincode.language value
-      language: golang
-      orgs: [Karga]
-      channels:
-      - name: private-karga-atlantis
-        orgs: [Karga]
-        policy: OR('KargaMSP.member','AtlantisMSP.member')
+#    - name: even-simpler
+#      # if defined, this will override the global chaincode.language value
+#      language: golang
+#      orgs: [Karga]
+#      channels:
+#      - name: private-karga-atlantis
+#        orgs: [Karga]
+#        policy: OR('KargaMSP.member','AtlantisMSP.member')
 
 

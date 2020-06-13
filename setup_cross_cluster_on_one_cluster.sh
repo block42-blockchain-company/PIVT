@@ -107,6 +107,7 @@ cp -r ../fabric-kube-three/hlf-kube/crypto-config/peerOrganizations/nevergreen.n
 cp ../fabric-kube-two/hlf-kube/crypto-config/ordererOrganizations/pivt.nl/orderers/orderer0.pivt.nl/tls/server.crt hlf-kube/crypto-config/ordererOrganizations/pivt.nl/orderers/orderer0.pivt.nl/tls/
 
 # Create Genesis Block
+cd $clusterOnePath
 cd hlf-kube/
 configtxgen -profile OrdererGenesis -channelID testchainid -outputBlock ./channel-artifacts/genesis.block
 cd ../
@@ -114,6 +115,14 @@ cd ../
 # Distribute Genesis Block to other cluster folders
 cp hlf-kube/channel-artifacts/genesis.block ../fabric-kube-two/hlf-kube/channel-artifacts/
 cp hlf-kube/channel-artifacts/genesis.block ../fabric-kube-three/hlf-kube/channel-artifacts/
+
+# Gather TLSRootCerts of each Peer to commmit/invoke chaincode (already done for cluster one above)
+cd $clusterTwoPath
+cp -r ../fabric-kube/hlf-kube/crypto-config/peerOrganizations/aptalkarga.tr/msp/* hlf-kube/crypto-config/peerOrganizations/aptalkarga.tr/msp/
+cp -r ../fabric-kube-three/hlf-kube/crypto-config/peerOrganizations/nevergreen.nl/msp/* hlf-kube/crypto-config/peerOrganizations/nevergreen.nl/msp/
+cd $clusterThreePath
+cp -r ../fabric-kube/hlf-kube/crypto-config/peerOrganizations/aptalkarga.tr/msp/* hlf-kube/crypto-config/peerOrganizations/aptalkarga.tr/msp/
+cp -r ../fabric-kube-two/hlf-kube/crypto-config/peerOrganizations/atlantis.com/msp/* hlf-kube/crypto-config/peerOrganizations/atlantis.com/msp/
 
 # Put right Certs in cluster three so that he can connect to an external orderer
 cd $clusterThreePath
@@ -179,9 +188,9 @@ helm template channel-flow/ -f samples/cross-cluster-raft-tls/cluster-three/netw
 cd $clusterOnePath
 helm template chaincode-flow/ -f samples/cross-cluster-raft-tls/cluster-one/network.yaml -f samples/cross-cluster-raft-tls/cluster-one/crypto-config.yaml -f samples/cross-cluster-raft-tls/cluster-one/hostAliases.yaml | argo submit - --watch
 cd $clusterTwoPath
-helm template channel-flow/ -f samples/cross-cluster-raft-tls/cluster-two/network.yaml -f samples/cross-cluster-raft-tls/cluster-two/crypto-config.yaml -f samples/cross-cluster-raft-tls/cluster-two/hostAliases.yaml | argo submit - --namespace two --watch
+helm template chaincode-flow/ -f samples/cross-cluster-raft-tls/cluster-two/network.yaml -f samples/cross-cluster-raft-tls/cluster-two/crypto-config.yaml -f samples/cross-cluster-raft-tls/cluster-two/hostAliases.yaml | argo submit - --namespace two --watch
 cd $clusterThreePath
-helm template channel-flow/ -f samples/cross-cluster-raft-tls/cluster-three/network.yaml -f samples/cross-cluster-raft-tls/cluster-three/crypto-config.yaml -f samples/cross-cluster-raft-tls/cluster-three/hostAliases.yaml | argo submit - --namespace three --watch
+helm template chaincode-flow/ -f samples/cross-cluster-raft-tls/cluster-three/network.yaml -f samples/cross-cluster-raft-tls/cluster-three/crypto-config.yaml -f samples/cross-cluster-raft-tls/cluster-three/hostAliases.yaml | argo submit - --namespace three --watch
 
 ##########################################################################################################################################
 # SUCCESS

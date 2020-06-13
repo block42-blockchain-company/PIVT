@@ -11,6 +11,18 @@ PeerOrgs:
       Count: 1
 
 # ---------------------------------------------------------------------------
+# Used to create external peer org MSP secrets. 
+# Required to create channels where external peer orgs participate.
+# Additionally init.sh script creates empty placeholder MSP folders for convenience.
+# It's user's responsibility to copy MSP certificates to created folders.
+# ---------------------------------------------------------------------------
+ExternalPeerOrgs:
+  - Name: Atlantis
+    Domain: atlantis.com
+  - Name: Karga
+    Domain: aptalkarga.tr
+
+# ---------------------------------------------------------------------------
 # Used to create external orderer org TLS CA secrets.
 # Required if this part of Fabric network is not running an orderer node
 # and needs to connect an external orderer.

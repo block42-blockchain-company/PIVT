@@ -8,6 +8,9 @@ externalOrderer:
   host: orderer0
   port: "7050"
 
+flow:
+  commit:
+    enabled: true
 
 network:
   # used by init script to create genesis block and by peer-org-flow to parse consortiums

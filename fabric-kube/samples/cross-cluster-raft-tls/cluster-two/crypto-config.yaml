@@ -22,3 +22,15 @@ PeerOrgs:
       Count: 2
     Users:
       Count: 1
+
+# ---------------------------------------------------------------------------
+# Used to create external peer org MSP secrets. 
+# Required to create channels where external peer orgs participate.
+# Additionally init.sh script creates empty placeholder MSP folders for convenience.
+# It's user's responsibility to copy MSP certificates to created folders.
+# ---------------------------------------------------------------------------
+ExternalPeerOrgs:
+  - Name: Karga
+    Domain: aptalkarga.tr
+  - Name: Nevergreen
+    Domain: nevergreen.nl
